@@ -38,6 +38,7 @@ class BookInstanceInline(admin.TabularInline):
 class BookAdmin(admin.ModelAdmin):
     list_display = ('title', 'author', 'display_genre')
 
+
     inlines = [BookInstanceInline]
 
 
@@ -45,4 +46,13 @@ class BookAdmin(admin.ModelAdmin):
 @admin.register(BookInstance)
 class BookInstanceAdmin(admin.ModelAdmin):
     list_filter = ('status', 'due_back')
-    list_display = ('book', 'status', 'due_back', 'id')
+    list_display = ('book', 'status', 'due_back', 'id', 'borrower')
+
+    fieldsets = (
+        (None, {
+            'fields': ('book', 'imprint', 'id')
+        }),
+        ('Availability', {
+            'fields': ('status', 'due_back', 'borrower')
+        })
+    )

@@ -1,0 +1,25 @@
+{% extends "base_generic.html" %}
+
+{% block title %}
+<title>Local Library Landing page</title>
+{% endblock %}
+
+{% block content %}
+<h1>Local Library Home</h1>
+
+<p>Welcome to <em>LocalLibrary</em>, a very basic Django website developed as an example</p>
+
+<h2>Dynamic content</h2>
+
+<p>The library has the following record counts:</p>
+<ul>
+    <li><strong>Books:</strong>  {{ num_books }}</li>
+    <li><strong>Copies:</strong>  {{ num_instances }}</li>
+    <li><strong>Copies available:</strong>  {{ num_instances_available }}</li>
+    <li><strong>Authors:</strong>  {{ num_authors }}</li>
+    <li><strong>Books contain "watch":</strong>  {{ num_books_contain_watch }}</li>
+    <li><strong>Genres contain "french":</strong>  {{ num_genres_contain_french }}</li>
+</ul>
+<h4><a href="{% url 'books' %}">Take a look 0_0</a></h4>
+<p>You have visited this page {{ num_visits }} time{{ num_visits|pluralize }}.</p>
+{% endblock %}
